@@ -1,9 +1,37 @@
-var express = require('express');
-var router = express.Router();
-const COOKIE_MAX_AGE = 1000 * 60 * 60 * 24 * 7; // a week in milliseconds
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('signIn');
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const router = express.Router();
+const ONE_WEEK = 1000 * 60 * 60 * 24 * 7;
+
+
+
+router.use(cookieParser());
+
+
+function setCookies(req, res, next) {
+
+  const username = req.cookies.username;
+  res.locals.inputUserName = username || '';
+
+  console.log('respond: ', res.locals.inputUserName);
+  next();
+}
+
+router.use(setCookies);
+
+
+router.get("/", (req, res) => {
+  res.render("signIn");
 });
+
+
+router.post("/sign_in", (req, res) => {
+  const username = req.body.username;
+  res.cookie("username", username, { maxAge: ONE_WEEK });
+  res.redirect("/");
+});
+
+
+
 
 module.exports = router;

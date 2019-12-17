@@ -31,6 +31,13 @@ router.post("/sign_in", (req, res) => {
   res.redirect("/");
 });
 
+// Sign Out route
+
+router.get('/sign_out', function (req, res) {
+  console.log('hello')
+  res.clearCookie("username");
+  res.redirect('/');
+});
 
 
 

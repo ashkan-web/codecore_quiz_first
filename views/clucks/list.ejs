@@ -1,0 +1,57 @@
+<%- include('../partials/header.ejs') %>
+
+<% if(inputUserName){ %>
+</br>
+    <div class="row">
+            <div class="col-sm-4">
+                <div class="card" style= "width: 80em">
+                    <div class="card-body">
+                        <h5 class="card-title">Trending Clucks</h5>
+                        <p class="card-text">
+
+            <div class="col-sm-50">
+               
+                    <% 
+                    if(clucks){
+                        for(let i=0;i<clucks.length;i++){
+                            
+                            
+                            %>
+                        
+                        <div class="card mb-3" style="max-width: auto;">
+                                <div class="row no-gutters">
+                                  <div class="col-md-2">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Chicken_icon_05.svg/1200px-Chicken_icon_05.svg.png" width="20px">
+                                  </div>
+                                  
+                                  <div class="col-md-50">
+                                        <div class="card-body">
+                                        <div class="row">
+                                        <div class="col-sm">
+                                          <h5 class="card-title"><%=clucks[i].username%></h5>
+                                        </div>
+                                        <div class="col-sm"><small class="text-muted"><%= moment(clucks[i].created_at).fromNow()%></small>
+                                        </div>
+                                    </div>
+                                      <p class="card-text"><%=clucks[i].content%></p>
+                                      <p class="card-text"><img src="<%if(clucks[i].image_url){%><%=clucks[i].image_url%><%}%>">    </p>
+                                      <p class="card-text"></p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        
+                        <%
+                            }
+                        }
+                        %>                    
+<% } %>
+    
+            </div>
+          </div>
+
+   
+
+
+
+<%- include('../partials/footer.ejs') %>

@@ -1,16 +1,15 @@
 
-exports.up = function(knex,Promise) {
-    return knex.schema.createTable("posts",table=>{
-        table.incriments("id");
-        table.string("title");
-        table.text("content");
-        table.string("tags");
-        table.timestamp("createAt").defaultTo(knex.fn.now());
-    });
+exports.up = function(knex) {
+    return knex.schema.createTable("clucks", (t) => {
+      t.bigIncrements("id");
+      t.text("username");
+      t.text("content");
+      t.text("image_url");
+      t.timestamp("created_at").defaultTo(knex.fn.now());
+      t.timestamp("updated_at");
+    })
+  };
   
-};
-
-exports.down = function(knex,Promise) {
-    return knex.schema.dropTable("posts");
-  
-};
+  exports.down = function(knex) {
+    return knex.schema.dropTable("clucks");
+  };

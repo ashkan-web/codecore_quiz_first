@@ -12,7 +12,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views','views');
-
+const clucksRouter = require("./routes/clucks");
 
 
 app.use(express.json());
@@ -39,6 +39,8 @@ app.use(setCookies);
 
 
 const usersRouter = require('./routes/users');
+
+app.use("/clucks", clucksRouter);
 app.use('/', usersRouter);
 
 const PORT = process.env.PORT || 4000

@@ -4,7 +4,7 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: 'quiz-db',
+      database: 'quiz_db',
       username: 'ashkan',
       password: 'ashkan'
     },

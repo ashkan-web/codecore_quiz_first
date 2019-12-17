@@ -39,6 +39,8 @@ router.get('/sign_out', function (req, res) {
   res.redirect('/');
 });
 
-
+router.get("/", (req, res) => {
+  res.redirect("clucks/list");
+});
 
 module.exports = router;
